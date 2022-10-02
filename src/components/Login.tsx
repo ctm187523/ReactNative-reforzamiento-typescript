@@ -82,7 +82,6 @@ export const Login = () => {
         })
     }
 
-
     //metodo llamado al pulsar logout
     const logout = () => {
         dispatch({ type: 'logout' })
