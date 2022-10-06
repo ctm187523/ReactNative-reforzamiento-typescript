@@ -1,6 +1,5 @@
 import { type } from "os"
 import { useEffect, useReducer } from "react"
-import { preProcessFile } from "typescript";
 import { useCounter } from '../hooks/useCounter';
 
 interface AuthState {

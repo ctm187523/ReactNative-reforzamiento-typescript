@@ -1,6 +1,7 @@
 import { Contador } from "./components/Contador"
 import { ContadorConHook } from "./components/ContadorConHook"
 import { Login } from "./components/Login"
+import Usuarios from "./components/Usuarios"
 import { Funciones } from "./typescript/Funciones"
 //import { ObjetosLiterales } from "./typescript/ObjetosLiterales"
 //import { TiposBasicos } from "./typescript/TiposBasicos"
@@ -15,7 +16,8 @@ import { Funciones } from "./typescript/Funciones"
       {/* <Funciones /> */}
       {/* <Contador /> */}
       {/* <ContadorConHook /> */}
-      <Login />
+      {/* <Login /> */}
+      <Usuarios />
     </div>
   )
 }
