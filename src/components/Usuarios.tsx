@@ -1,36 +1,72 @@
-import { useEffect } from 'react';
-import { reqResApi } from './api/repRes';
+
+import { useUsuarios } from '../hooks/useUsuarios';
+import { Usuario } from '../interfaces/repRes';
+
 
 
 const Usuarios = () => {
 
-    useEffect(() => {
+  //usamos el customHook hooks/useUsuarios
+  const { usuarios, paginaSiguiente, paginaAnterior} = useUsuarios();
+  
+  //creamos un metodo,desestructuramos el objeto usuario
+  const renderItem = ({ id, first_name, last_name, email, avatar }: Usuario) => {
 
-        //llamar al API,instalamos axios con: npm i axios, lo configuramos en reqRes.tsx de la carpeta api
-        //users seria la continuacion de URL configurada en reqRes.tsx baseUrl
-        //en un useEffect no podemos usar el async y el awit por tanto usamos una promesa con .then
-        reqResApi.get('/users') 
-            .then( resp => {
-                console.log(resp.data.data);
-            })
-            .catch( err => console.log(err));
- 
-    }, [])
+    return (
+      // el key deberia de ser un String
+      <tr key={id.toString()}>
+        <td>
+          <img
+            src={avatar}
+            alt={first_name}
+            style={{
+              width: 35,
+              borderRadius: 100
+            }} />
+        </td>
+        <td> {first_name} {last_name}</td>
+        <td> {email}  </td>
+      </tr>
+    )
+  }
+
+
   return (
     <>
       <h3>Usuarios: </h3>
       <table className="table">
         <thead>
-            <tr>
-                <th>Avatar</th>
-                <th>Nombre</th>
-                <th>Email</th>
-            </tr>
+          <tr>
+            <th>Avatar</th>
+            <th>Nombre</th>
+            <th>Email</th>
+          </tr>
         </thead>
         <tbody>
-
+          {
+            //usamos la funcion renderItem creada arriba para que renderize los usuarios
+            usuarios.map(usuario => renderItem(usuario))
+          }
         </tbody>
       </table>
+
+       {/* boton para hacer una paginacion al pulsar el boton carga una nueva pagina hacia atras con nuevos usuarios */}
+       <button
+        className="btn btn-primary"
+        onClick={ paginaAnterior }
+        style = {{ marginRight: 10 }}
+      >
+        Anteriores
+      </button>
+
+
+      {/* boton para hacer una paginacion al pulsar el boton carga una nueva pagina hacia adelante con nuevos usuarios */}
+      <button
+        className="btn btn-primary"
+        onClick={ paginaSiguiente }
+      >
+        Siguientes
+      </button>
     </>
   )
 }

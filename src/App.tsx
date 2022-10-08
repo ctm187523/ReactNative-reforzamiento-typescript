@@ -1,5 +1,6 @@
 import { Contador } from "./components/Contador"
 import { ContadorConHook } from "./components/ContadorConHook"
+import { Formularios } from "./components/Formularios"
 import { Login } from "./components/Login"
 import Usuarios from "./components/Usuarios"
 import { Funciones } from "./typescript/Funciones"
@@ -17,7 +18,8 @@ import { Funciones } from "./typescript/Funciones"
       {/* <Contador /> */}
       {/* <ContadorConHook /> */}
       {/* <Login /> */}
-      <Usuarios />
+      {/* <Usuarios /> */}
+      <Formularios />
     </div>
   )
 }
